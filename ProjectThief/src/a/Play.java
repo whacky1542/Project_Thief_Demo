@@ -2,49 +2,63 @@ package a;
 
 import javafx.application.Application;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class Play extends Application {
 	public void start(Stage primaryStage) {
-		// Button Row for the quit button and any future buttons
+		// Button Row and its components
 		HBox btnRow = new HBox();
+		btnRow.setAlignment(Pos.TOP_RIGHT);
+		
+		// Quit Button
 		Button quitBtn = new Button("Quit");
 		quitBtn.setOnAction(e -> System.exit(0));
 		btnRow.getChildren().add(quitBtn);
-		btnRow.setAlignment(Pos.TOP_RIGHT);
+		//----------
 		
-		// Map for all the objects other than the thief and button row
-		MapPane map = new MapPane();
+		// Graphical objects in the scene
+		Thief thief = new Thief();
+		Wall wall1 = new Wall(0, 100, 200, 90);
+		Wall wall2 = new Wall(95, -295, 800, 0);
+		Wall wall3 = new Wall(-95, -295, 800, 0);
+		Wall wall4 = new Wall(0, -695, 200, 90);
+		StackPane map = new StackPane();
+		map.getChildren().addAll(wall1, wall2, wall3, wall4);
+		//----------
 		
-		// View of the buttons, thief, and map
+		// GUI for all the elements to reside in
 		StackPane view = new StackPane();
-		view.getChildren().addAll(map, new Thief(), btnRow);
+		view.getChildren().addAll(map, thief, btnRow);
 		view.setOnKeyPressed(e -> {
 			switch (e.getCode()) {
 			case UP:
-				view.setLayoutY(view.getLayoutY() + 1);
+				map.setTranslateY(map.getTranslateY() + 5);
 				break;
 			case DOWN:
-				view.setLayoutY(view.getLayoutY() - 1);
+				map.setTranslateY(map.getTranslateY() - 5);
 				break;
 			case LEFT:
-				view.setLayoutX(view.getLayoutX() + 1);
+				map.setTranslateX(map.getTranslateX() + 5);
 				break;
 			case RIGHT:
-				view.setLayoutX(view.getLayoutX() - 1);
+				map.setTranslateX(map.getTranslateX() - 5);
 				break;
 			}
 		});
+		//----------
 		
 		// Lights, Camera, Action!!
-		Scene game = new Scene(view, 500, 500);
+		Scene game = new Scene(view, 1000, 1000);
 		primaryStage.setTitle("Theif Demo");
 		primaryStage.setScene(game);
 		primaryStage.show();
+		//----------
 	}
 	
 	public static void main(String[] args) {

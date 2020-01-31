@@ -14,4 +14,12 @@ public class Wall extends Rectangle implements Collidable {
 		setTranslateY(y);
 		setRotate(rotation);
 	}
+	
+	public double getBX() {
+		return getWidth() / 2;
+	}
+	
+	public double getBY() {
+		return getHeight() / 2;
+	}
 }

@@ -16,10 +16,14 @@ public class Wall extends Rectangle implements Collidable {
 	}
 	
 	public double getBX() {
+		if (getRotate() == 90)
+			return getHeight() / 2;
 		return getWidth() / 2;
 	}
 	
 	public double getBY() {
+		if (getRotate() == 90)
+			return getWidth() / 2;
 		return getHeight() / 2;
 	}
 }

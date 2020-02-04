@@ -13,5 +13,22 @@ Use the arrow keys to navigate and any available buttons in the GUI to perform a
 ## Code Example:
 This is an example of some code that implements player movement. The PrevX and PrevY are for collision mechanics in other parts of the program. As it is, movement is a little annoying. A solution to this would be to instead have a toggle on when pressed and toggle off when released type of movement system setting the speed and direction.
 ```
-<img src="Example.png" />
+view.setOnKeyPressed(e -> {
+			prevX = thief.getTranslateX();
+			prevY = thief.getTranslateY();
+			switch (e.getCode()) {
+			case UP:
+				thief.setTranslateY(thief.getTranslateY() - 5);
+				break;
+			case DOWN:
+				thief.setTranslateY(thief.getTranslateY() + 5);
+				break;
+			case LEFT:
+				thief.setTranslateX(thief.getTranslateX() - 5);
+				break;
+			case RIGHT:
+				thief.setTranslateX(thief.getTranslateX() + 5);
+				break;
+			}
+});
 ```

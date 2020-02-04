@@ -140,7 +140,7 @@ public class Play extends Application {
 				}
 			}
 		};
-		Timeline time = new Timeline(new KeyFrame(Duration.seconds(0.05), checkCollision));
+		Timeline time = new Timeline(new KeyFrame(Duration.seconds(0.01), checkCollision));
 		time.setCycleCount(Timeline.INDEFINITE);
 		time.play();
 		//----------

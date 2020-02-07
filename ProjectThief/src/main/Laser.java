@@ -1,4 +1,4 @@
-package a;
+package main;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
